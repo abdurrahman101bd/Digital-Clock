@@ -1,0 +1,346 @@
+/* FONT */
+@font-face {
+	font-family : digital-7-mono;
+	src: url(assets/digital-7-mono.ttf);
+}
+
+
+/* ROOT COLOR VARIABLES */
+:root{
+  --bg:hsl(0, 0%, 95%);
+  --card:hsl(0, 0%, 100%);
+  --display:hsl(0, 0%, 95%);
+  --text:hsl(0, 0%, 5%);
+  --text-muted:hsl(0, 0%, 20%);
+  --shadow:0 0 10px 0 hsl(0, 0%, 50%);
+  --shadow2:0 0 5px 0 hsl(0, 0%, 30%);
+  --header-bg:hsl(200, 20%, 92%);
+  --search-bg:hsl(0, 0%, 100%);
+  --footer-bg:hsl(200, 20%, 92%);
+}
+
+.darkmode{
+  --bg:hsl(0, 0%, 5%);
+  --card:hsl(0, 0%, 0%);
+  --display:hsl(0, 0%, 10%);
+  --text:hsl(0, 0%, 95%);
+  --text-muted:hsl(0, 0%, 70%);
+  --shadow:0 0 10px 0 hsl(0, 0%, 35%);
+  --shadow2:0 0 5px 0 hsl(0, 0%, 50%);
+  --header-bg:hsl(200, 20%, 15%);
+  --search-bg:hsl(0, 0%, 10%);
+  --footer-bg:hsl(200, 20%, 15%);
+}
+
+/* GLOBAL STYLING */
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* HEADER STYLING */
+header.header{
+  width:80%;
+  max-width:1200px;
+  margin: 20px auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  background: var(--header-bg);
+  box-shadow: var(--shadow2);
+  border-radius: 10px;
+}
+
+header .header-left{
+  display:flex;
+  flex-direction: column;
+}
+
+header .logo{
+  font-size:40px;
+  margin-bottom:5px;
+}
+
+header h1{
+  font-size:35px;
+  font-weight:600;
+  font-family: digital-7-mono;
+}
+
+header p{
+  font-size:16px;
+  color: var(--text-muted);
+}
+
+/* Right side theme button */
+header .header-right button{
+  height:50px;
+  width:50px;
+  border-radius:50%;
+  background: var(--display);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  border:none;
+  box-shadow: var(--shadow2);
+}
+
+header .header-right svg{
+  fill: var(--text);
+}
+
+.darkmode header .header-right svg:first-child{display: none;}
+.darkmode header .header-right svg:last-child{display: block;}
+
+
+/* CLOCK STYLING */
+.clock{
+  width:520px;
+  padding:40px;
+  background: var(--card);
+  box-shadow: var(--shadow2);
+  border-radius:8px;
+  margin:20px auto; 
+}
+
+.clock .display{
+  padding:40px 10px 20px;
+  background: var(--display);
+  box-shadow: var(--shadow);
+  position:relative;
+  border-radius: 10px;
+}
+
+.clock .display .weekday{
+  font-size:20px;
+  font-family: digital-7-mono;
+  font-weight:600;
+  width:100%;
+  position:absolute;
+  top:10px;
+  left:0;
+  text-align:center;
+  color: var(--text);
+}
+
+.weekday span{
+  padding:0 10px;
+  opacity:0.2;
+}
+
+.weekday span.active{
+  opacity:1;
+}
+
+/* Container for time+AM/PM and date stacked vertically */
+.display .timeDisplay{
+  display:flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  gap: 10px; 
+}
+
+/* Container for time and AM/PM inline */
+.time-container{
+  display:flex;
+  align-items: flex-end; 
+  justify-content: center;
+}
+
+/* Time numbers styling */
+.timeDisplay .time{
+  font-size:80px;
+  display:flex;
+  justify-content:center;
+  letter-spacing:3px;
+  font-family: digital-7-mono, sans-serif;
+  color: var(--text);
+}
+
+/* AM/PM styling inline with time */
+.timeDisplay .format{
+  margin-left:10px;  
+  font-size:20px;
+  font-weight: 500;
+  font-family: digital-7-mono;
+  color: var(--text-muted);
+}
+
+/* Date displayed on separate line below time */
+.timeDisplay .date{
+  display:flex;
+  justify-content:center;
+  font-size:35px;
+  font-weight:500;
+  font-family: digital-7-mono, sans-serif;
+  color: var(--text-muted);
+  flex-wrap:wrap;
+  margin-top: 20px;
+}
+
+/* Blinking colon */
+.time .dot{
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker{
+  25%{opacity:0;}
+}
+
+
+/* THEME BUTTON */
+button{
+  border:none;
+  background:transparent;
+}
+
+#theme-switch{
+  height:50px;
+  width:50px;
+  padding:0;
+  border-radius:50%;
+  background: var(--display);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+}
+
+#theme-switch svg{fill: var(--text);}
+#theme-switch svg:last-child{display: none;}
+.darkmode #theme-switch svg:first-child{display: none;}
+.darkmode #theme-switch svg:last-child{display: block;}
+
+/* ========== COUNTRY DROPDOWN ========== */
+#country-dropdown {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid var(--text-muted);
+  background: var(--card);
+  color: var(--text);
+  appearance: none; 
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow2);
+
+  /* Center align the selected text */
+  text-align: center;
+  text-align-last: center; 
+}
+
+#country-dropdown option {
+  text-align: center;
+}
+
+/* Hover/focus effect */
+#country-dropdown:hover,
+#country-dropdown:focus {
+  border-color: var(--text);
+  outline: none;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+/* Darkmode support */
+.darkmode #country-dropdown {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #country-dropdown {
+    font-size: 15px;
+    padding: 8px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  #country-dropdown {
+    font-size: 14px;
+    padding: 6px;
+    max-width: 95%;
+  }
+}
+
+/* FOOTER STYLING */
+footer.footer{
+  width:100%;
+  max-width:none;
+  padding:15px 0;
+  background: var(--footer-bg);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color: var(--text-muted);
+  font-size:14px;
+  font-weight: 500;
+  box-shadow: var(--shadow2);
+  margin-top:auto; /* push footer to bottom */
+}
+
+/* RESPONSIVE STYLING */
+@media screen and (max-width:1024px){
+  header.header, footer.footer{
+    width:100%; 
+    max-width:none;
+  }
+}
+
+@media screen and (max-width:768px){
+  header.header, footer.footer{
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+  }
+  header .header-left{
+    align-items:center;
+    text-align:center;
+    margin-bottom:10px;
+  }
+  .weekday span{
+    padding:0 5px;
+    font-size:14px;
+  }
+  .timeDisplay .time{
+    font-size:60px;
+  }
+  .timeDisplay .date{
+    font-size:25px;
+  }
+}
+
+@media screen and (max-width:480px){
+  header h1{font-size:20px;}
+  header p{font-size:14px;}
+  .clock .timeDisplay .time{font-size:50px;}
+  .timeDisplay .date{font-size:20px;}
+  .weekday span{
+    padding:0 3px;
+    font-size:15px;
+  }
+  .clock{
+    width:89%;    
+    padding:20px; 
+  }
+}
