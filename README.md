@@ -23,7 +23,7 @@ It displays **local time**, **selected country time**, and **date**, with **ligh
 - [⚡ Installation](#-installation)
 - [🛠 How to Use](#-how-to-use)
 - [🛠 Technologies Used](#-technologies-used)
-- [📄 License](#-license)
+- [📄 License](LICENSE)
 - [👤 Author](#-author)
 - [🌍 Social Links](#-social-links)
 
@@ -132,9 +132,7 @@ index.html
 
 ## 📄 License
 
-This project is licensed under the [MIT License](#-license).
-Feel free to use, modify, and distribute.
-
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
